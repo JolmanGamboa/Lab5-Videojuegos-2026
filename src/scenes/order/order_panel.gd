@@ -3,6 +3,9 @@ extends Control
 # --- Captura de nodos en caché (operador $ solo en la cabecera) -------------
 @onready var lista_container: VBoxContainer = $MarginContainer/VBoxContainer/ScrollContainer/ListaContainer
 @onready var lbl_resumen: Label = $MarginContainer/VBoxContainer/LblResumen
+@onready var lbl_cliente: Label = $MarginContainer/VBoxContainer/LblCliente
+@onready var btn_entregar: Button = $MarginContainer/VBoxContainer/BtnEntregar
+@onready var lbl_resultado: Label = $MarginContainer/VBoxContainer/LblResultado
 
 
 func _ready() -> void:
@@ -11,6 +14,10 @@ func _ready() -> void:
 	# Suscripción reactiva: la vista se redibuja cuando el pedido cambia.
 	EventBus.order_updated.connect(_on_order_updated)
 	EventBus.total_changed.connect(_on_total_changed)
+	EventBus.customer_changed.connect(_on_customer_changed)
+	EventBus.delivery_result.connect(_on_delivery_result)
+
+	btn_entregar.pressed.connect(_on_entregar_pressed)
 
 
 # --- Reacción a los eventos del bus -----------------------------------------
@@ -18,6 +25,9 @@ func _ready() -> void:
 ## Redibuja la lista completa con el pedido recibido.
 func _on_order_updated(order: Dictionary) -> void:
 	_limpiar_lista()
+
+	# Sin productos no hay nada que entregar: el botón se desactiva.
+	btn_entregar.disabled = order.is_empty()
 
 	if order.is_empty():
 		_agregar_mensaje_vacio()
@@ -30,6 +40,20 @@ func _on_order_updated(order: Dictionary) -> void:
 ## Refresca el total sin calcular nada por su cuenta.
 func _on_total_changed(new_total: int) -> void:
 	lbl_resumen.text = "Total del pedido: $%d" % new_total
+
+
+## Muestra el cliente en turno para comparar con el pedido armado.
+func _on_customer_changed(customer: Dictionary) -> void:
+	lbl_cliente.text = "%s pide: %s" % [str(customer["nombre"]), str(customer["descripcion"])]
+
+
+## Retroalimentación de la entrega: verde si fue correcta, roja si no.
+func _on_delivery_result(success: bool, message: String) -> void:
+	lbl_resultado.text = message
+	if success:
+		lbl_resultado.add_theme_color_override("font_color", Color(0.4, 0.85, 0.4))
+	else:
+		lbl_resultado.add_theme_color_override("font_color", Color(0.95, 0.4, 0.4))
 
 
 # --- Construcción dinámica de la lista --------------------------------------
@@ -78,3 +102,9 @@ func _agregar_mensaje_vacio() -> void:
 func _on_quitar_pressed(item_id: String) -> void:
 	print("[order_panel] Intención item_removed -> " + item_id)
 	EventBus.item_removed.emit(item_id)
+
+
+## Publica la intención de entregar. La validación la hace GlobalManager.
+func _on_entregar_pressed() -> void:
+	print("[order_panel] Intención order_delivered")
+	EventBus.order_delivered.emit()

@@ -36,7 +36,14 @@ horizontal_alignment = 1
 
 [node name="LblAyuda" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Productos que se van a entregar al cliente."
+text = "Revisa que el pedido coincida con lo que pidió el cliente y entrégalo."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="LblCliente" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Cliente en turno"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -54,6 +61,17 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Total del pedido: $0"
 horizontal_alignment = 1
+
+[node name="BtnEntregar" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Entregar pedido al cliente"
+
+[node name="LblResultado" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = ""
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="BtnVolver" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_button_nav")]
 layout_mode = 2
