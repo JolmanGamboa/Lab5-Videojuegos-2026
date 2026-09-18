@@ -38,6 +38,17 @@ signal total_changed(new_total: int)
 ## Notificación del pedido completo vigente.
 signal order_updated(order: Dictionary)
 
+# --- Señales de la mecánica de atención (Actividad 5) -----------------------
+
+## Intención de entregar el pedido armado al cliente en turno.
+signal order_delivered()
+
+## Notificación del cliente en turno: { nombre, descripcion, atendidos }.
+signal customer_changed(customer: Dictionary)
+
+## Resultado de la entrega, validado por `GlobalManager`.
+signal delivery_result(success: bool, message: String)
+
 # --- Catálogo único de rutas de escena --------------------------------------
 # Las instancias de ButtonNav resuelven su destino desde el Inspector; estas
 # constantes las usa `MainApp` para el arranque del sistema.
