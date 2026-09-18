@@ -40,6 +40,29 @@ text = "Elige un producto y luego su tamaño para agregarlo al pedido"
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="PanelCliente" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginCliente" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelCliente"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxCliente" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelCliente/MarginCliente"]
+layout_mode = 2
+
+[node name="LblCliente" type="Label" parent="MarginContainer/VBoxContainer/PanelCliente/MarginCliente/VBoxCliente"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Cliente en turno"
+autowrap_mode = 3
+
+[node name="LblAtendidos" type="Label" parent="MarginContainer/VBoxContainer/PanelCliente/MarginCliente/VBoxCliente"]
+layout_mode = 2
+text = "Clientes atendidos: 0"
+
 [node name="GridProductos" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 14

@@ -27,6 +27,8 @@ const NOMBRES: Dictionary = {
 @onready var btn_pequeno: Button = $MarginContainer/VBoxContainer/TamaniosContainer/BtnPequeno
 @onready var btn_mediano: Button = $MarginContainer/VBoxContainer/TamaniosContainer/BtnMediano
 @onready var btn_grande: Button = $MarginContainer/VBoxContainer/TamaniosContainer/BtnGrande
+@onready var lbl_cliente: Label = $MarginContainer/VBoxContainer/PanelCliente/MarginCliente/VBoxCliente/LblCliente
+@onready var lbl_atendidos: Label = $MarginContainer/VBoxContainer/PanelCliente/MarginCliente/VBoxCliente/LblAtendidos
 
 ## Producto seleccionado en el mostrador. Estado de presentación, no de negocio.
 var _producto_seleccionado: String = ""
@@ -48,6 +50,7 @@ func _ready() -> void:
 
 	# Suscripción reactiva: la etiqueta se actualiza de forma pasiva.
 	EventBus.total_changed.connect(_on_total_changed)
+	EventBus.customer_changed.connect(_on_customer_changed)
 
 
 # --- Emisión de intenciones -------------------------------------------------
@@ -79,3 +82,9 @@ func _on_tamanio_pressed(base_name: String) -> void:
 ## Refresca el total sin conocer cómo ni quién lo calculó.
 func _on_total_changed(new_total: int) -> void:
 	lbl_total.text = "Total del pedido: $%d" % new_total
+
+
+## Muestra qué pide el cliente en turno: es el contexto de la mecánica.
+func _on_customer_changed(customer: Dictionary) -> void:
+	lbl_cliente.text = "%s pide: %s" % [str(customer["nombre"]), str(customer["descripcion"])]
+	lbl_atendidos.text = "Clientes atendidos: %d · Ganancias: $%d" % [int(customer["atendidos"]), int(customer["ganancias"])]
