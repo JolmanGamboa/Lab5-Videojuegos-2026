@@ -1,11 +1,5 @@
 extends Control
 
-## ============================================================================
-## MainApp — Orquestador de escenas y pila de historial
-## ============================================================================
-## Único suscriptor con autoridad sobre el árbol visual: instancia el panel
-## entrante en `SceneContainer` y libera el anterior con `queue_free()`.
-## ----------------------------------------------------------------------------
 
 # --- Captura de nodos en caché (operador $ solo en la cabecera) -------------
 @onready var scene_container: Control = $SceneContainer
@@ -18,9 +12,7 @@ var navigation_history: Array[String] = []
 
 
 func _ready() -> void:
-	# CONNECT_DEFERRED: el callback se ejecuta al final del frame, nunca dentro
-	# de la propia emisión de la señal. Así el panel que solicita la navegación
-	# termina de procesar su evento antes de que su nodo sea liberado.
+
 	EventBus.navigation_requested.connect(_on_navigation_requested, CONNECT_DEFERRED)
 
 	print("[main_app] Orquestador suscrito al bus global. Cargando menú...")

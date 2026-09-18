@@ -1,11 +1,5 @@
 extends Button
 
-## ============================================================================
-## ButtonNav — Componente reutilizable de navegación
-## ============================================================================
-## Se configura desde el Inspector: no requiere script en la escena que lo usa.
-## ----------------------------------------------------------------------------
-
 ## Escena de destino. El filtro del Inspector solo admite archivos `.tscn`.
 @export_file("*.tscn") var target_scene: String = ""
 

@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://cqcgn85bntgsc"]
 
 [ext_resource type="PackedScene" path="res://src/components/navigation/button_nav.tscn" id="2_button_nav"]
 
-[node name="ConfigPanel" type="Control"]
+[node name="ConfigPanel" type="Control" unique_id=1024583178]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1526143332]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,62 +22,62 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=154821669]
 layout_mode = 2
 theme_override_constants/separation = 18
 alignment = 1
 
-[node name="LblTitulo" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LblTitulo" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1778235545]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "Configuración del local"
 horizontal_alignment = 1
 
-[node name="LblDescripcion" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LblDescripcion" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1849397989]
 layout_mode = 2
 text = "Parámetros vigentes de la cafetería"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=363173509]
 layout_mode = 2
 theme_override_constants/h_separation = 32
 theme_override_constants/v_separation = 12
 columns = 2
 
-[node name="LblTitulo0" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="LblTitulo0" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=390858936]
 layout_mode = 2
 text = "Mesas disponibles"
 
-[node name="LblValor0" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="LblValor0" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=665342006]
 layout_mode = 2
 text = "12 mesas"
 
-[node name="LblTitulo1" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="LblTitulo1" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=760843708]
 layout_mode = 2
 text = "Horario de atención"
 
-[node name="LblValor1" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="LblValor1" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1214031019]
 layout_mode = 2
 text = "Lunes a sábado, 7:00 a 19:00"
 
-[node name="LblTitulo2" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="LblTitulo2" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=429830539]
 layout_mode = 2
 text = "Tamaños"
 
-[node name="LblValor2" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="LblValor2" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1297220304]
 layout_mode = 2
 text = "Pequeño · Mediano (+$1000) · Grande (+$2000)"
 
-[node name="LblTitulo3" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="LblTitulo3" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=528931454]
 layout_mode = 2
 text = "Productos"
 
-[node name="LblValor3" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="LblValor3" type="Label" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=955645841]
 layout_mode = 2
 text = "Café · Té · Chocolate · Pastel"
 
-[node name="BtnVolver" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_button_nav")]
+[node name="BtnVolver" parent="MarginContainer/VBoxContainer" unique_id=64825859 instance=ExtResource("2_button_nav")]
 layout_mode = 2
 text = "Volver al menú"
 target_scene = "res://src/scenes/main/menu_panel.tscn"

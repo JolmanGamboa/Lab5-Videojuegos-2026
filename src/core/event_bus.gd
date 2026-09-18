@@ -1,22 +1,5 @@
 extends Node
 
-## ============================================================================
-## EventBus — Canal único de señales globales (Singleton + Observer)
-## ============================================================================
-## Registrado como Autoload bajo el identificador exacto `EventBus`.
-##
-## Ningún panel conoce a otro panel, ni al `GlobalManager`, ni toca el árbol
-## de escenas. Cada actor publica intenciones en este canal y los
-## responsables reaccionan:
-##
-##   GUI ──intención──▶ EventBus ──▶ GlobalManager (único dueño del pedido)
-##                          │                 │
-##                          │                 └──▶ total_changed / order_updated ──▶ GUI
-##                          └──▶ MainApp (única autoridad sobre el árbol)
-## ----------------------------------------------------------------------------
-
-# --- Señales globales con tipado estático estricto --------------------------
-
 ## Solicitud de navegación. La emiten las instancias de `ButtonNav`; la escucha
 ## exclusivamente `main_app.gd`. `discard_previous` indica si la pantalla
 ## saliente debe retirarse de la pila de historial (caso de los regresos).

@@ -1,18 +1,5 @@
 extends Node
 
-## ============================================================================
-## GlobalManager — Estado global del pedido (Autoload)
-## ============================================================================
-## Registrado como Autoload bajo el identificador exacto `GlobalManager`.
-##
-## Es el único cerebro de cálculo del sistema: ninguna interfaz calcula precios
-## ni guarda el pedido. El estado vive aquí y sobrevive a la destrucción de los
-## paneles, por lo que el usuario puede salir del mostrador, visitar créditos y
-## regresar encontrando su pedido intacto.
-## ----------------------------------------------------------------------------
-
-# --- Constantes del dominio -------------------------------------------------
-
 ## Recargo en pesos según el tamaño. Es la tabla que define el negocio.
 const RECARGO_TAMANIO: Dictionary = {
 	"pequeno": 0,
